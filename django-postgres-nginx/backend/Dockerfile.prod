@@ -14,8 +14,10 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Prevents Python from buffering stdout and stder
 ENV PYTHONUNBUFFERED 1
 
-# Install psycopg2 dependencies
-RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
+# Install psycopg2 and Pillow dependencies
+RUN apk update \
+    && apk add postgresql-dev gcc python3-dev musl-dev \
+    && apk add jpeg-dev zlib-dev libjpeg
 
 # Install dependencies
 COPY ./requirements.txt .
